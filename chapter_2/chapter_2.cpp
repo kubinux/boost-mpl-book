@@ -14,11 +14,14 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "exercise_0.h"
+#include "exercise_3.h"
 #include <boost/type_traits/is_same.hpp>
 
 #define BOOST_TEST_MODULE chapter_2
 #define BOOST_TEST_DYN_LINK
 #include <boost/test/unit_test.hpp>
+
+#include <sstream>
 
 BOOST_AUTO_TEST_CASE(ex_0_non_reference)
 {
@@ -48,5 +51,54 @@ BOOST_AUTO_TEST_CASE(ex_0_const_reference)
 
     bool const is_same = boost::is_same<expected_type, actual_type>::value;
     BOOST_CHECK(is_same);
+}
+
+BOOST_AUTO_TEST_CASE(ex_3_float)
+{
+    std::ostringstream os;
+    os << type_descriptor<float>();
+    BOOST_CHECK_EQUAL("unknown", os.str());
+}
+
+BOOST_AUTO_TEST_CASE(ex_3_float_const_ref)
+{
+    std::ostringstream os;
+    os << type_descriptor<float const&>();
+    BOOST_CHECK_EQUAL("unknown const&", os.str());
+}
+
+BOOST_AUTO_TEST_CASE(ex_3_char)
+{
+    std::ostringstream os;
+    os << type_descriptor<char>();
+    BOOST_CHECK_EQUAL("char", os.str());
+}
+
+BOOST_AUTO_TEST_CASE(ex_3_char_const)
+{
+    std::ostringstream os;
+    os << type_descriptor<char const>();
+    BOOST_CHECK_EQUAL("char const", os.str());
+}
+
+BOOST_AUTO_TEST_CASE(ex_3_int_volatile)
+{
+    std::ostringstream os;
+    os << type_descriptor<int volatile>();
+    BOOST_CHECK_EQUAL("int volatile", os.str());
+}
+
+BOOST_AUTO_TEST_CASE(ex_3_long_const_volatile)
+{
+    std::ostringstream os;
+    os << type_descriptor<long const volatile>();
+    BOOST_CHECK_EQUAL("long const volatile", os.str());
+}
+
+BOOST_AUTO_TEST_CASE(ex_3_short_const_volatile_pointer_const_ref)
+{
+    std::ostringstream os;
+    os << type_descriptor<short const volatile* const&>();
+    BOOST_CHECK_EQUAL("short const volatile* const&", os.str());
 }
 
