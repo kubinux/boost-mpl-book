@@ -16,6 +16,7 @@
 #include "exercise_0.h"
 #include "exercise_1.h"
 #include "exercise_3.h"
+#include "exercise_5.h"
 #include <boost/type_traits/is_same.hpp>
 
 #define BOOST_TEST_MODULE chapter_2
@@ -349,5 +350,14 @@ BOOST_AUTO_TEST_CASE(ex_3_short_const_volatile_pointer_const_ref)
     std::ostringstream os;
     os << type_descriptor<short const volatile* const&>();
     BOOST_CHECK_EQUAL("short const volatile* const&", os.str());
+}
+
+BOOST_AUTO_TEST_CASE(ex_5_book_example)
+{
+    std::ostringstream os;
+    os << ex5::type_descriptor<char* (*[])()>();
+    BOOST_CHECK_EQUAL(
+        "array of pointer to function of () returning pointer to char",
+        os.str());
 }
 
