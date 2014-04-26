@@ -16,16 +16,18 @@
 #ifndef EXERCISE_0_H_INCLUDED_KFBWCG0I
 #define EXERCISE_0_H_INCLUDED_KFBWCG0I
 
-template <typename T>
-struct add_const_ref
-{
-    typedef T const& type;
-};
+#include <boost/type_traits/remove_reference.hpp>
+#include <boost/type_traits/remove_cv.hpp>
+#include <boost/type_traits/add_const.hpp>
 
 template <typename T>
-struct add_const_ref<T&>
+class add_const_ref
 {
-    typedef T& type;
+    typedef typename boost::remove_reference<T>::type no_ref_type;
+    typedef typename boost::remove_cv<no_ref_type>::type no_cv_type;
+    typedef typename boost::add_const<no_cv_type>::type const_type;
+public:
+    typedef const_type& type;
 };
 
 #endif // include guard

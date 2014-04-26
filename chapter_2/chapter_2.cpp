@@ -14,6 +14,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "exercise_0.h"
+#include "exercise_1.h"
 #include "exercise_3.h"
 #include <boost/type_traits/is_same.hpp>
 
@@ -36,7 +37,7 @@ BOOST_AUTO_TEST_CASE(ex_0_non_reference)
 BOOST_AUTO_TEST_CASE(ex_0_reference)
 {
     typedef int& arg_type;
-    typedef int& expected_type;
+    typedef int const& expected_type;
     typedef add_const_ref<arg_type>::type actual_type;
 
     bool const is_same = boost::is_same<expected_type, actual_type>::value;
@@ -48,6 +49,254 @@ BOOST_AUTO_TEST_CASE(ex_0_const_reference)
     typedef int const& arg_type;
     typedef int const& expected_type;
     typedef add_const_ref<arg_type>::type actual_type;
+
+    bool const is_same = boost::is_same<expected_type, actual_type>::value;
+    BOOST_CHECK(is_same);
+}
+
+BOOST_AUTO_TEST_CASE(ex_0_const_volatile_non_reference)
+{
+    typedef int const volatile arg_type;
+    typedef int const& expected_type;
+    typedef add_const_ref<arg_type>::type actual_type;
+
+    bool const is_same = boost::is_same<expected_type, actual_type>::value;
+    BOOST_CHECK(is_same);
+}
+
+BOOST_AUTO_TEST_CASE(ex_0_const_volatile_reference)
+{
+    typedef int const volatile& arg_type;
+    typedef int const& expected_type;
+    typedef add_const_ref<arg_type>::type actual_type;
+
+    bool const is_same = boost::is_same<expected_type, actual_type>::value;
+    BOOST_CHECK(is_same);
+}
+
+BOOST_AUTO_TEST_CASE(ex_1_int_replace_float_to_char)
+{
+    typedef int arg_type;
+    typedef float old_type;
+    typedef char new_type;
+    typedef int expected_type;
+    typedef replace_type<arg_type, old_type, new_type>::type actual_type;
+
+    bool const is_same = boost::is_same<expected_type, actual_type>::value;
+    BOOST_CHECK(is_same);
+}
+
+BOOST_AUTO_TEST_CASE(ex_1_int_replace_int_to_char)
+{
+    typedef int arg_type;
+    typedef int old_type;
+    typedef char new_type;
+    typedef char expected_type;
+    typedef replace_type<arg_type, old_type, new_type>::type actual_type;
+
+    bool const is_same = boost::is_same<expected_type, actual_type>::value;
+    BOOST_CHECK(is_same);
+}
+
+BOOST_AUTO_TEST_CASE(ex_1_int_const_replace_int_to_char)
+{
+    typedef int const arg_type;
+    typedef int old_type;
+    typedef char new_type;
+    typedef char const expected_type;
+    typedef replace_type<arg_type, old_type, new_type>::type actual_type;
+
+    bool const is_same = boost::is_same<expected_type, actual_type>::value;
+    BOOST_CHECK(is_same);
+}
+
+BOOST_AUTO_TEST_CASE(ex_1_int_const_replace_int_const_to_char)
+{
+    typedef int const arg_type;
+    typedef int const old_type;
+    typedef char new_type;
+    typedef char expected_type;
+    typedef replace_type<arg_type, old_type, new_type>::type actual_type;
+
+    bool const is_same = boost::is_same<expected_type, actual_type>::value;
+    BOOST_CHECK(is_same);
+}
+
+BOOST_AUTO_TEST_CASE(ex_1_int_volatile_replace_int_volatile_to_char_cv)
+{
+    typedef int volatile arg_type;
+    typedef int volatile old_type;
+    typedef char const volatile new_type;
+    typedef char const volatile expected_type;
+    typedef replace_type<arg_type, old_type, new_type>::type actual_type;
+
+    bool const is_same = boost::is_same<expected_type, actual_type>::value;
+    BOOST_CHECK(is_same);
+}
+
+BOOST_AUTO_TEST_CASE(ex_1_int_volatile_replace_int_to_char_cv)
+{
+    typedef int volatile arg_type;
+    typedef int old_type;
+    typedef char const volatile new_type;
+    typedef char const volatile expected_type;
+    typedef replace_type<arg_type, old_type, new_type>::type actual_type;
+
+    bool const is_same = boost::is_same<expected_type, actual_type>::value;
+    BOOST_CHECK(is_same);
+}
+
+BOOST_AUTO_TEST_CASE(ex_1_int_const_volatile_replace_int_volatile_to_char)
+{
+    typedef int const volatile arg_type;
+    typedef int volatile old_type;
+    typedef char new_type;
+    typedef int const volatile expected_type;
+    typedef replace_type<arg_type, old_type, new_type>::type actual_type;
+
+    bool const is_same = boost::is_same<expected_type, actual_type>::value;
+    BOOST_CHECK(is_same);
+}
+
+BOOST_AUTO_TEST_CASE(ex_1_int_ref_replace_int_to_char)
+{
+    typedef int& arg_type;
+    typedef int old_type;
+    typedef char new_type;
+    typedef char& expected_type;
+    typedef replace_type<arg_type, old_type, new_type>::type actual_type;
+
+    bool const is_same = boost::is_same<expected_type, actual_type>::value;
+    BOOST_CHECK(is_same);
+}
+
+BOOST_AUTO_TEST_CASE(ex_1_int_ref_replace_int_to_char_const_ref)
+{
+    typedef int& arg_type;
+    typedef int old_type;
+    typedef char const& new_type;
+    typedef char const& expected_type;
+    typedef replace_type<arg_type, old_type, new_type>::type actual_type;
+
+    bool const is_same = boost::is_same<expected_type, actual_type>::value;
+    BOOST_CHECK(is_same);
+}
+
+BOOST_AUTO_TEST_CASE(ex_1_int_ptr_replace_int_to_char)
+{
+    typedef int* arg_type;
+    typedef int old_type;
+    typedef char new_type;
+    typedef char* expected_type;
+    typedef replace_type<arg_type, old_type, new_type>::type actual_type;
+
+    bool const is_same = boost::is_same<expected_type, actual_type>::value;
+    BOOST_CHECK(is_same);
+}
+
+BOOST_AUTO_TEST_CASE(ex_1_int_ptr_replace_int_to_char_ref)
+{
+    typedef int* arg_type;
+    typedef int old_type;
+    typedef char& new_type;
+    typedef char* expected_type;
+    typedef replace_type<arg_type, old_type, new_type>::type actual_type;
+
+    bool const is_same = boost::is_same<expected_type, actual_type>::value;
+    BOOST_CHECK(is_same);
+}
+
+BOOST_AUTO_TEST_CASE(ex_1_int_array_3_replace_int_to_char)
+{
+    typedef int arg_type[3];
+    typedef int old_type;
+    typedef char new_type;
+    typedef char expected_type[3];
+    typedef replace_type<arg_type, old_type, new_type>::type actual_type;
+
+    bool const is_same = boost::is_same<expected_type, actual_type>::value;
+    BOOST_CHECK(is_same);
+}
+
+BOOST_AUTO_TEST_CASE(ex_1_int_ptr_array_3_replace_int_to_char)
+{
+    typedef int* arg_type[3];
+    typedef int old_type;
+    typedef char new_type;
+    typedef char* expected_type[3];
+    typedef replace_type<arg_type, old_type, new_type>::type actual_type;
+
+    bool const is_same = boost::is_same<expected_type, actual_type>::value;
+    BOOST_CHECK(is_same);
+}
+
+BOOST_AUTO_TEST_CASE(ex_1_int_ptr_array_3_replace_int_ptr_to_char_ptr)
+{
+    typedef int* arg_type[3];
+    typedef int* old_type;
+    typedef char* new_type;
+    typedef char* expected_type[3];
+    typedef replace_type<arg_type, old_type, new_type>::type actual_type;
+
+    bool const is_same = boost::is_same<expected_type, actual_type>::value;
+    BOOST_CHECK(is_same);
+}
+
+BOOST_AUTO_TEST_CASE(ex_1_int_ptr_array_3_replace_int_ptr_to_char_const)
+{
+    typedef int* arg_type[3];
+    typedef int* old_type;
+    typedef char const new_type;
+    typedef char const expected_type[3];
+    typedef replace_type<arg_type, old_type, new_type>::type actual_type;
+
+    bool const is_same = boost::is_same<expected_type, actual_type>::value;
+    BOOST_CHECK(is_same);
+}
+
+BOOST_AUTO_TEST_CASE(ex_1_int_array_replace_int_to_char_const)
+{
+    typedef int arg_type[];
+    typedef int old_type;
+    typedef char const new_type;
+    typedef char const expected_type[];
+    typedef replace_type<arg_type, old_type, new_type>::type actual_type;
+
+    bool const is_same = boost::is_same<expected_type, actual_type>::value;
+    BOOST_CHECK(is_same);
+}
+
+BOOST_AUTO_TEST_CASE(ex_1_func_returning_int_replace_int_to_char)
+{
+    typedef int arg_type();
+    typedef int old_type;
+    typedef char new_type;
+    typedef char expected_type();
+    typedef replace_type<arg_type, old_type, new_type>::type actual_type;
+
+    bool const is_same = boost::is_same<expected_type, actual_type>::value;
+    BOOST_CHECK(is_same);
+}
+
+BOOST_AUTO_TEST_CASE(ex_1_book_example_1)
+{
+    typedef int const* arg_type[10];
+    typedef int const old_type;
+    typedef long new_type;
+    typedef long* expected_type[10];
+    typedef replace_type<arg_type, old_type, new_type>::type actual_type;
+
+    bool const is_same = boost::is_same<expected_type, actual_type>::value;
+    BOOST_CHECK(is_same);
+}
+
+BOOST_AUTO_TEST_CASE(ex_1_book_example_2)
+{
+    typedef char& (*arg_type)(char&);
+    typedef char& old_type;
+    typedef long& new_type;
+    typedef long& (*expected_type)(long&);
+    typedef replace_type<arg_type, old_type, new_type>::type actual_type;
 
     bool const is_same = boost::is_same<expected_type, actual_type>::value;
     BOOST_CHECK(is_same);
