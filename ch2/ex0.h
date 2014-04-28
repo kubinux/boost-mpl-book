@@ -17,15 +17,13 @@
 #define EX0_H_INCLUDED_KFBWCG0I
 
 #include <boost/type_traits/remove_reference.hpp>
-#include <boost/type_traits/remove_cv.hpp>
 #include <boost/type_traits/add_const.hpp>
 
 template <typename T>
 class add_const_ref
 {
     typedef typename boost::remove_reference<T>::type no_ref_type;
-    typedef typename boost::remove_cv<no_ref_type>::type no_cv_type;
-    typedef typename boost::add_const<no_cv_type>::type const_type;
+    typedef typename boost::add_const<no_ref_type>::type const_type;
 public:
     typedef const_type& type;
 };

@@ -50,7 +50,7 @@ BOOST_AUTO_TEST_CASE(const_reference)
 BOOST_AUTO_TEST_CASE(const_volatile_non_reference)
 {
     typedef int const volatile arg_type;
-    typedef int const& expected_type;
+    typedef int const volatile& expected_type;
     typedef add_const_ref<arg_type>::type actual_type;
 
     bool const is_same = boost::is_same<expected_type, actual_type>::value;
@@ -60,7 +60,7 @@ BOOST_AUTO_TEST_CASE(const_volatile_non_reference)
 BOOST_AUTO_TEST_CASE(const_volatile_reference)
 {
     typedef int const volatile& arg_type;
-    typedef int const& expected_type;
+    typedef int const volatile& expected_type;
     typedef add_const_ref<arg_type>::type actual_type;
 
     bool const is_same = boost::is_same<expected_type, actual_type>::value;
