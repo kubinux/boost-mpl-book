@@ -13,7 +13,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-add_executable(chapter_2 chapter_2.cpp)
+add_executable(chapter_2 chapter_2.cpp ex_2_test.cpp)
 
 target_link_libraries(
     chapter_2
