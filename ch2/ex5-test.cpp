@@ -13,22 +13,17 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef EXERCISE_0_H_INCLUDED_KFBWCG0I
-#define EXERCISE_0_H_INCLUDED_KFBWCG0I
+#include "ex5.h"
+#include <boost/test/unit_test.hpp>
+#include <boost/type_traits/is_same.hpp>
+#include <sstream>
 
-#include <boost/type_traits/remove_reference.hpp>
-#include <boost/type_traits/remove_cv.hpp>
-#include <boost/type_traits/add_const.hpp>
-
-template <typename T>
-class add_const_ref
+BOOST_AUTO_TEST_CASE(book_example)
 {
-    typedef typename boost::remove_reference<T>::type no_ref_type;
-    typedef typename boost::remove_cv<no_ref_type>::type no_cv_type;
-    typedef typename boost::add_const<no_cv_type>::type const_type;
-public:
-    typedef const_type& type;
-};
-
-#endif // include guard
+    std::ostringstream os;
+    os << ex5::type_descriptor<char* (*[])()>();
+    BOOST_CHECK_EQUAL(
+        "array of pointer to function of () returning pointer to char",
+        os.str());
+}
 

@@ -13,8 +13,8 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef EXERCISE_5_H_INCLUDED_470WVIB1
-#define EXERCISE_5_H_INCLUDED_470WVIB1
+#ifndef EX5_H_INCLUDED_470WVIB1
+#define EX5_H_INCLUDED_470WVIB1
 
 #include <ostream>
 

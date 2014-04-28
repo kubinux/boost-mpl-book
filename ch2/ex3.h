@@ -13,8 +13,8 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef EXERCISE_3_H_INCLUDED_7YEDXMK5
-#define EXERCISE_3_H_INCLUDED_7YEDXMK5
+#ifndef EX3_H_INCLUDED_7YEDXMK5
+#define EX3_H_INCLUDED_7YEDXMK5
 
 #include <boost/type_traits/integral_constant.hpp>
 #include <boost/type_traits/is_const.hpp>

@@ -13,10 +13,17 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-add_executable(chapter_2 chapter_2.cpp ex_2_test.cpp)
+add_executable(ch2
+               ch2.cpp
+               ex0-test.cpp
+               ex1-test.cpp
+               ex2-test.cpp
+               ex3-test.cpp
+               ex5-test.cpp
+               )
 
 target_link_libraries(
-    chapter_2
+    ch2
     ${Boost_FILESYSTEM_LIBRARY}
     ${Boost_SYSTEM_LIBRARY}
     ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY}

@@ -13,8 +13,8 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef EXERCISE_2_H_INCLUDED_JUWN1C4K
-#define EXERCISE_2_H_INCLUDED_JUWN1C4K
+#ifndef EX2_H_INCLUDED_JUWN1C4K
+#define EX2_H_INCLUDED_JUWN1C4K
 
 #include <boost/type_traits/remove_reference.hpp>
 #include <boost/type_traits/add_pointer.hpp>

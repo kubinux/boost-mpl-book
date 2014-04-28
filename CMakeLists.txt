@@ -20,4 +20,4 @@ find_package(Boost COMPONENTS system filesystem unit_test_framework REQUIRED)
 
 link_directories(${Boost_LIBRARY_DIRS})
 
-add_subdirectory(chapter_2)
+add_subdirectory(ch2)

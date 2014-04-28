@@ -13,8 +13,8 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef EXERCISE_1_H_INCLUDED_TFPEGCRZ
-#define EXERCISE_1_H_INCLUDED_TFPEGCRZ
+#ifndef EX1_H_INCLUDED_TFPEGCRZ
+#define EX1_H_INCLUDED_TFPEGCRZ
 
 #include <boost/static_assert.hpp>
 #include <boost/type_traits/add_const.hpp>
